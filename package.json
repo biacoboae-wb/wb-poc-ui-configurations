@@ -10,9 +10,15 @@
     "watch:build": "npm run build -- --watch",
     "clean": "rimraf build",
     "prepare": "npm run build",
-    "test:lint": "eslint --ignore-path .gitignore --ext js,jsx,snap .",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx src --color -f table",
+    "lint:fix": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx src --color -f table --fix",
     "test:unit": "jest",
     "test": "npm run test:lint && npm run test:unit"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint:fix"
+    }
   },
   "one-amex": {
     "app": {
@@ -33,13 +39,13 @@
     }
   },
   "dependencies": {
-    "@americanexpress/one-app-router": "^1.1.0",
-    "holocron": "^1.1.2",
-    "react": "^16.14.0",
-    "content-security-policy-builder": "^2.1.0",
     "@americanexpress/one-app-ducks": "^4.3.1",
+    "@americanexpress/one-app-router": "^1.1.0",
+    "content-security-policy-builder": "^2.1.0",
+    "holocron": "^1.1.2",
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.7.2",
+    "react": "^16.14.0",
     "react-intl": "^5.10.6",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5"
@@ -47,6 +53,7 @@
   "devDependencies": {
     "@americanexpress/one-app-bundler": "^6.10.0",
     "@americanexpress/one-app-runner": "^6.10.0",
+    "@babel/polyfill": "^7.12.1",
     "amex-jest-preset-react": "^6.1.0",
     "babel-eslint": "^10.1.0",
     "babel-preset-amex": "^3.5.0",
@@ -54,12 +61,12 @@
     "enzyme-to-json": "^3.6.1",
     "eslint": "^7.15.0",
     "eslint-config-amex": "^13.1.0",
-    "jest": "^26.6.3",
-    "rimraf": "^3.0.2",
     "glob": "^7.1.6",
-    "@babel/polyfill": "^7.12.1",
+    "husky": "^7.0.4",
+    "jest": "^26.6.3",
     "jest-json-schema": "^2.1.0",
-    "parrot-middleware": "^4.1.1"
+    "parrot-middleware": "^4.1.1",
+    "rimraf": "^3.0.2"
   },
   "jest": {
     "preset": "amex-jest-preset-react",
