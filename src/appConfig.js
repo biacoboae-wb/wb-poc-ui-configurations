@@ -1,4 +1,4 @@
-import csp from './csp';
+import csp from "./csp";
 
 export default {
   csp,

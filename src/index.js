@@ -1,3 +1,3 @@
-import ModuleContainer from './components/RootModule';
+import ModuleContainer from "./components/RootModule";
 
 export default ModuleContainer;
