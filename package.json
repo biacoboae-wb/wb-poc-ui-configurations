@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "contributors": [],
+  "private": true,
   "scripts": {
     "start": "one-app-runner",
     "prebuild": "npm run clean",
@@ -10,15 +11,11 @@
     "watch:build": "npm run build -- --watch",
     "clean": "rimraf build",
     "prepare": "npm run build",
+    "postinstall": "husky install",
     "lint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx src --color -f table",
     "lint:fix": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx src --color -f table --fix",
     "test:unit": "jest",
     "test": "npm run test:lint && npm run test:unit"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo \"test\""
-    }
   },
   "one-amex": {
     "app": {
